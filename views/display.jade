@@ -1,0 +1,10 @@
+extends layout
+
+block content
+  h1 test
+  if data.length
+  ul#items
+  each items in data
+      li() #{items}
+  else 
+    p No items avalible
