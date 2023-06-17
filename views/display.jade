@@ -2,9 +2,10 @@ extends layout
 
 block content
   h1 test
+  a(href="/") home
   if data.length
   ul#items
   each items in data
-      li() #{items}
+      li #{items}
   else 
     p No items avalible
