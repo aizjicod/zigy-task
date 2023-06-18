@@ -1,0 +1,66 @@
+extends layout
+body              
+block content
+  h1 Financial sheet
+  a(href="/api-docs") Api Docs
+  div#container(style="min-width: 500px; height: 500px; margin: 0 auto" data-rows={data})
+    script(type="text/javascript").
+      const {data} = $("#container").data('rows');
+      const reversedData = data.map(d => d.reverse());
+      const title = reversedData.shift()
+      const titleArrayLength = title.length - 1
+      Highcharts.chart('container', {
+      title: {
+        text: 'Financial sheet Data',
+        align: 'left'
+      },
+      subtitle: {
+        text: 'On this app i will be converting a Financial sheet to a chart. Source: <a href="https://docs.google.com/spreadsheets/d/1B4TYe1uabJHJLLQy_8aTPSJi2yP-eg_DeTTQENzz2J8/edit?usp=sharing" target="_blank">Spread sheet</a>.',
+        align: 'left'
+      },
+      yAxis: {
+        title: {
+          text: title[titleArrayLength]
+        },
+        allowDecimals: true
+      },
+      xAxis: {
+        accessibility: {
+          rangeDescription: `Range: ${title[0]} to ${title[titleArrayLength - 1]}`
+        }
+      },
+      legend: {
+        layout: 'vertical',
+        align: 'right',
+        verticalAlign: 'middle'
+      },
+      plotOptions: {
+        series: {
+          label: {
+            connectorAllowed: false
+          },
+          pointStart: +title[0]
+        }
+      },
+      series: reversedData.map(i => {
+          const name = i.pop();
+          return {
+            name,
+            data: i.map(n => +n)
+          }
+        }),
+      responsive: {
+        rules: [{
+          condition: {
+            maxWidth: 500
+          },
+          chartOptions: {
+            legend: {
+              layout: 'horizontal',
+              align: 'center',
+              verticalAlign: 'bottom'
+            }
+          }
+        }]
+      }
+      });

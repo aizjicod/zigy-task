@@ -1,0 +1,13 @@
+doctype html
+html
+  head
+    title= title
+    link(rel='stylesheet' href='/stylesheets/style.css')
+    script(type='text/javascript' src="http://code.jquery.com/jquery-1.9.1.min.js")
+    script(type='text/javascript' src="http://code.highcharts.com/highcharts.js")
+    script(type='text/javascript' src="http://code.highcharts.com/modules/exporting.js")
+    <script src="jquery-3.6.4.min.js"></script>
+    block scripts
+      script(src='/javascripts/script.js')
+  body
+    block content

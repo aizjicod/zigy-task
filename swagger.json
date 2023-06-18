@@ -1,0 +1,44 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Zigy test",
+    "description": "this will be the description of the test",
+    "license": {
+      "name": "MIT",
+      "url": "https://opensource.org/licenses/MIT"
+    }
+  },
+  "host": "localhost:3000",
+  "basePath": "/",
+  "tags": [
+    {
+      "name": "Charts",
+      "description": "API Looking at charts from a Financial sheet"
+    }
+  ],
+  "schemes": [
+    "http"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "web resources"
+  ],
+  "paths": {
+    "/": {
+      "get": {
+        "tags": [
+          "Chart"
+        ],
+        "summary": "Shows a chart from a Financial sheet",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    }
+  }
+}
