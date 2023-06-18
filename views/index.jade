@@ -2,6 +2,7 @@ extends layout
 body              
 block content
   h1 Financial sheet
+  a(href="/api-docs") Api Docs
   div#container(style="min-width: 500px; height: 500px; margin: 0 auto" data-rows={data})
     script(type="text/javascript").
       const {data} = $("#container").data('rows');
