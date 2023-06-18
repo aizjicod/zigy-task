@@ -1,5 +1,14 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  h1 Home
+  a(href="/display") display
+  div#id.left.container(class='user user-' + name)
+    h1.title= name
+    - var n = [0,1,2,3,4,5];
+    form
+      each i in n
+        div.box
+          label(for=`textbox${i + 1}`)
+          input(type='text' name=`textbox${i + 1}` id=`textbox${i + 1}`)
+          input(type='checkbox', name=`checkbox${i + 1}`)
