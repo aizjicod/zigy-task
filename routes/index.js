@@ -10,10 +10,6 @@ const spreadsheetId = process.env.SHEETS_ID;
 const sheetName = process.env.SHEETS_NAME;
 
 /* GET home page. */
-
-async function testGetSpreadSheetValues() {
-}
-
 router.get('/', async function(req, res, next) {
   try {
     const auth = await getAuthToken();
@@ -22,10 +18,9 @@ router.get('/', async function(req, res, next) {
       sheetName,
       auth
     })
-    console.log('output for getSpreadSheetValues', JSON.stringify(response.data, null, 2));
-    res.render('index', { title: 'Express' });
+    res.render('index', { data: response.data.values});
   } catch(error) {
-    res.render('index', { message: error.message, error: error.stack});
+    res.render('error', { message: error.message, error: error.stack});
   }
 });
 
